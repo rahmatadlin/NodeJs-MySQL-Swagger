@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-// const { Art } = require('./models/index')
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger-output.json");
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const Controller = require("./controllers/controller.js");
 
 app.set("view engine", "ejs");
